@@ -30,5 +30,5 @@ if (inp.isdisjoint(yes) == False):
     print(f"Generating CSV files in {DATA_DIR}")
     for i in range(len(y)):
         leak = "leak" if bool(y[i]) else "noleak"
-        X[i].to_csv(path_or_buf=DATA_DIR.joinpath(f'{leak}{i}' if bool(y[i]) else f'{leak}{i-nleaks}'), index=False)
+        X[i].to_csv(path_or_buf=DATA_DIR.joinpath(f'{leak}{i}.csv' if bool(y[i]) else f'{leak}{i-nleaks}.csv'), index=False)
     print("Files generated")
