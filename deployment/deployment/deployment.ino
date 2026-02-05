@@ -1,6 +1,8 @@
 
+#include <iostream>
 #include <TFT_eSPI.h> //has a hardware-specific setup file.
 #include <SPI.h>
+#include "../../data/data.h"
 
 TFT_eSPI tft = TFT_eSPI();
 
@@ -10,7 +12,7 @@ void setup() {
 
   tft.init();
 
-  Serial.println("Screen initialized.")
+  Serial.println("Screen initialized.");
 
   tft.fillScreen(TFT_BLACK);
   drawtext("Device initialized.\nBeginning run.", TFT_WHITE);
