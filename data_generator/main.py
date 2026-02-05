@@ -4,10 +4,10 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR.joinpath('data')
 
-#Modify the variables here 
+# Modify the variables here 
 
 X, y = generate_dataset_with_features(
-    n_samples=4,
+    n_samples=30,
     leak_fraction=0.5,
     duration_seconds=180,
     sampling_hz=2.0,
@@ -31,3 +31,4 @@ if (inp.isdisjoint(yes) == False):
     for i in range(len(y)):
         leak = "leak" if bool(y[i]) else "noleak"
         X[i].to_csv(path_or_buf=DATA_DIR.joinpath(f'{leak}{i}' if bool(y[i]) else f'{leak}{i-nleaks}'), index=False)
+    print("Files generated")
