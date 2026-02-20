@@ -1,4 +1,5 @@
 {
     "cmake.sourceDirectory": "C:/Users/Fourt/Desktop/NN_IoT_Project/model/deployment/model/fourthstanza-project-1-cpp-mcu-v1",
-    "C_Cpp.default.compilerPath": "D:/msys64/ucrt64/bin/gcc.exe"
+    "C_Cpp.default.compilerPath": "D:/msys64/ucrt64/bin/gcc.exe",
+    "idf.currentSetup": "C:\\esp\\v5.5.2\\.espressif\\v5.5.2\\esp-idf"
 }
