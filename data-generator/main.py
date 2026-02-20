@@ -2,7 +2,7 @@ from datagen import generate_dataset_with_features
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT_DIR.joinpath('data')
+DATA_DIR = ROOT_DIR.joinpath('generated-data')
 
 # Modify the variables here 
 
