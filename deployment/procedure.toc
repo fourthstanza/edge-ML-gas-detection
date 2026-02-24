@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Legal information}{1}{section.1}%
+\contentsline {section}{\numberline {2}Tools required}{1}{section.2}%
+\contentsline {section}{\numberline {3}Process Justification \& Notes}{2}{section.3}%
+\contentsline {paragraph}{Why do we use edge impulse?}{2}{section*.2}%
+\contentsline {paragraph}{Why do we use the Arduino IDE / Arduino library as deployment tools?}{2}{section*.3}%
+\contentsline {section}{\numberline {4}Procedure}{2}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Create a model in Edge Impulse}{2}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Deploy the model}{4}{section.5}%
