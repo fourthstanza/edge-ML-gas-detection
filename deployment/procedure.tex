@@ -61,7 +61,7 @@ In order to follow the process described by this document, you must have the fol
     \item The requisite Arduino library and board manager for deploying code to your microcontroller architecture of choice
     \item The requisite USB drivers for your microcontroller of choice
     \item A \href{https://studio.edgeimpulse.com/signup}{"developer tier" Edge Impulse account}
-    \item A dataset to train your model on, or a trained TensorFlow model
+    \item A dataset to train your model on, or a trained TensorFlow Lite model
 \end{itemize}
 
 \section{Process Justification \& Notes}
@@ -73,6 +73,8 @@ It provides a dataset to model to library workflow. Of particular use is the mod
 Using the Arduino IDE \& library format is the easiest way to get code onto a real microcontroller without setting up a complex development environment yourself. It handles the flashing process using AVRDUDE in the background, and comes prepackaged with tools to automatically handle building your code for a specific architecture.\\
 
 After testing building a few models using the built-in model creator, would be best to migrate model creation and testing to a python notebook in order to perform complex tuning and testing in a more customizable environment. Once at that stage, Edge Impulse will be in the workflow as a way to package a model into a callable library for deployment. 
+
+\paragraph{Why are we using Tensorflow/tflite, and not more modern frameworks like PyTorch or JAX?} Since we're deploying on the edge, we need a workflow with aggressive optimization methods. TFLite is currently the only largely adopted deep edge nn model framework. It natively uses TensorFlow models and supports direct conversion from Keras. TF, ONNX, PyTorch etc target devices like phones and low-powered linux computers on the edge. 
 
 \section{Procedure}
 
@@ -143,7 +145,7 @@ Under the Raw Data section, click Generate features. Generate your features with
 
 Under the Regression section, pick your neural network settings. Save and train the model.\\
 
-\section{Deploy the model}
+\subsection{Deploy the model}
 
 Under Deployment, select Arduino library as the deployment target. Build the model, and download it to your device.\\
 

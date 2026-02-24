@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  24 FEB 2026 12:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  24 FEB 2026 12:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -245,9 +245,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 48.
  (procedure.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 7.
+(Font)              <7> on input line 8.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 7.
+(Font)              <5> on input line 8.
 )
 \tf@toc=\write4
 \openout4 = `procedure.toc'.
@@ -260,39 +260,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--74
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
-LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 86.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 86.
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 88.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 88.
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 86.
+(Font)              for symbol `textbraceleft' on input line 88.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 [3]
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
@@ -302,11 +297,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 150--151
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
-[4] (procedure.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
+
+ []
+
+[4] [5] (procedure.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
@@ -316,20 +316,20 @@ L3 programming layer <2025-12-29>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `procedure.out' has not changed.
-(rerunfilecheck)             Checksum: B5E335495F0E7C031A41C1108A2FCC63;886.
+(rerunfilecheck)             Checksum: C85A7D2AABE22F38E0D42E8F49E81D0D;900.
  ) 
 Here is how much of TeX's memory you used:
- 10567 strings out of 467871
- 161114 string characters out of 5418376
- 653206 words of memory out of 5000000
+ 10569 strings out of 467871
+ 161140 string characters out of 5418376
+ 679211 words of memory out of 5000000
  39306 multiletter control sequences out of 15000+600000
  632479 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,541b,1998s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,553b,1998s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Fourt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Fourt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on procedure.pdf (4 pages, 148941 bytes).
+Output written on procedure.pdf (5 pages, 151626 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
+ 167 PDF objects out of 1000 (max. 8388607)
+ 54 named destinations out of 1000 (max. 500000)
  49 words of extra memory for PDF output out of 10000 (max. 10000000)
 
