@@ -21,14 +21,15 @@ int xpos = 5;
 int ypos = 40;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Begining setup");
 
   tft.init();
+  Serial.println("Screen initialized.");
   tft.fillScreen(TFT_BLACK);
   tft.setFreeFont(FSB9);
 
-  Serial.println("Screen initialized.");
+ 
 
   analogSetAttenuation(ADC_6db); // for the voltage at max resistance of the pot
 
