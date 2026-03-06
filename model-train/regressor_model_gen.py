@@ -66,7 +66,7 @@ class DataSplit:
                 raise ValueError("Split proportions must sum to 1")
             if split[0] <= 0 or split[1] <= 0 or split[2] <= 0:
                 raise ValueError("Split proportions must be positive")
-            if split[1] * self.data_length-win_length < 1 or split[2] * self.data_length-win_length < 1:
+            if split[1] * (self.data_length-win_length) < 1 or split[2] * (self.data_length-win_length) < 1:
                 raise ValueError("Split proportions too small, no data allocated to test or validation set")
         else:
             split  = (0.6, 0.2, 0.2)
@@ -74,9 +74,6 @@ class DataSplit:
         self.split(split, seed)
 
     def split(self, split: tuple[float, float, float], seed: int | None = None):
-        
-        if seed is None:
-            seed = random.randint(0, 2 ** 32)
 
         random.seed(seed)
 
@@ -92,6 +89,15 @@ class DataSplit:
         prop = split[1] / (split[1] + split[2]) 
         self.tst_ind = random.sample(remaining, k = int(len(remaining) * prop))
         self.val_ind = list(set(remaining) - set(self.tst_ind))
+            
+    def shuffle_train_test(self, seed: int | None = None):
+
+        random.seed(seed)
+        test_train = self.tr_ind + self.tst_ind
+
+        self.tr_ind = random.sample(test_train, k = len(self.tr_ind))
+        # remaining indices are for testing & validation
+        self.tst_ind = list(set(test_train) - set(self.tr_ind))
 
     def tr_length(self) -> int:
         return len(self.tr_ind)
