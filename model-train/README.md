@@ -11,3 +11,5 @@ I've put these together to simplify my workflow training models and processing t
 * **Numpy version numpy-1.26.0** comes with Tensorflow.
 * **Pyarrow, FastParquet** for parquet support, if you are using parquetToPd.py
 
+The DataSplit class is used to handle randomly splitting datasets into training, testing, and validation. Initialize it as an object & use test_train_shuffle to shuffle the test/train split during hyperparameter optimization.
+
