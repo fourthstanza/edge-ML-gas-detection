@@ -52,7 +52,7 @@ class DataSplit:
 
     winlen: int
 
-    def __init__(self, X: np.ndarray, y:np.ndarray, win_length: int, split: tuple[float, float, float] | None, time: np.ndarray | None = None, seed: int | None = None):
+    def __init__(self, X: np.ndarray, y:np.ndarray, win_length: int, split: tuple[float, float, float] | list[float] | None, time: np.ndarray | None = None, seed: int | None = None):
         """
         Initialize the dataset split.
 
@@ -108,7 +108,7 @@ class DataSplit:
 
         self.split(split, seed)
 
-    def split(self, split: tuple[float, float, float], seed: int | None = None):
+    def split(self, split: tuple[float, float, float] | list[float], seed: int | None = None):
         """
         Randomly split the dataset into training, test, and validation sets.
 
