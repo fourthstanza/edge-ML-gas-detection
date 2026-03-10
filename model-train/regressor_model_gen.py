@@ -30,7 +30,7 @@ import tensorflow as tf # Use Keras API from TensorFlow
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT_DIR.joinpath('generated-data')
+DATA_DIR = ROOT_DIR.joinpath('data')
 
 from parquet_to_pd import parquetToDf
 from csv_to_pd import csvToDf
