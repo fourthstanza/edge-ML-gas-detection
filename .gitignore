@@ -1,3 +1,4 @@
 .vscode/
 data
 generated-data/
+model-train/__pycache__/
