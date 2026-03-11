@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import sklearn.preprocessing
 
 class DataSplit:
 
@@ -52,7 +53,7 @@ class DataSplit:
 
     winlen: int
 
-    def __init__(self, X: np.ndarray, y:np.ndarray, win_length: int, split: tuple[float, float, float] | list[float] | None, time: np.ndarray | None = None, seed: int | None = None):
+    def __init__(self, X: np.ndarray, y:np.ndarray, win_length: int, split: tuple[float, float, float] | list[float] | None, time: np.ndarray | None = None, seed: int | None = None, scaling: bool = False):
         """
         Initialize the dataset split.
 
@@ -91,7 +92,11 @@ class DataSplit:
         self.winlen = win_length
         self.features = X
         self.target = y
-        
+
+        if scaling is True:
+            scaler = sklearn.preprocessing.StandardScaler(copy=False)
+            scaler.fit_transform(self.features, self.target)
+
         self.time = time
 
         self.data_length = self.features.shape[0]
@@ -334,7 +339,7 @@ class DataIterable:
     def shape(self):
         return (len(self), self.parent.winlen)
     
-    def to_numpy(self):
+    def to_numpy(self, flatten=False):
         """
         Convert the dataset subset into NumPy arrays. Only use if absolutely necessary, as this may consume a large amount of memory depending on the window size. Required for SKLearn compatibility.
 
