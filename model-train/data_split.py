@@ -329,3 +329,7 @@ class DataIterable:
             ds = ds.shuffle(len(self))
 
         return ds.batch(batch_size)
+    
+    @property
+    def shape(self):
+        return (len(self), self.parent.winlen)
