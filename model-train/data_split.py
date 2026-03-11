@@ -333,3 +333,29 @@ class DataIterable:
     @property
     def shape(self):
         return (len(self), self.parent.winlen)
+    
+    def to_numpy(self):
+        """
+        Convert the dataset subset into NumPy arrays. Only use if absolutely necessary, as this may consume a large amount of memory depending on the window size. Required for SKLearn compatibility.
+
+        Returns
+        -------
+        tuple
+            (X_array, y_array) where:
+            - X_array is a NumPy array of shape (n_samples, winlen, n_features)
+              containing the feature windows.
+            - y_array is a NumPy array of shape (n_samples,) or (n_samples, n_targets)
+              containing the target values.
+        """
+        X_list = []
+        y_list = []
+
+        for i in range(len(self)):
+            X_i, y_i = self[i][:2]  # Ignore time if present
+            X_list.append(X_i)
+            y_list.append(y_i)
+
+        X_array = np.array(X_list)
+        y_array = np.array(y_list)
+
+        return X_array, y_array
