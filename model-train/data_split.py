@@ -352,11 +352,15 @@ class DataIterable:
             - y_array is a NumPy array of shape (n_samples,) or (n_samples, n_targets)
               containing the target values.
         """
+
         X_list = []
         y_list = []
 
         for i in range(len(self)):
             X_i, y_i = self[i][:2]  # Ignore time if present
+            if flatten == True:
+                X_i = X_i.flatten(order = 'F')
+                y_i = y_i.flatten(order = 'F')
             X_list.append(X_i)
             y_list.append(y_i)
 
