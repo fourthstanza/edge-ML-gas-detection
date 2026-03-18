@@ -348,9 +348,9 @@ class DataIterable:
         tuple
             (X_array, y_array) where:
             - X_array is a NumPy array of shape (n_samples, winlen, n_features)
-              containing the feature windows.
+              containing the feature windows. If flatten is True, the shape will be (n_samples * winlen * n_features).
             - y_array is a NumPy array of shape (n_samples,) or (n_samples, n_targets)
-              containing the target values.
+              containing the target values. If flatten is True, the shape will be (n_samples * n_targets).
         """
         X_list = []
         y_list = []
