@@ -2,3 +2,5 @@
 data
 generated-data/
 model-train/__pycache__/
+.onnx
+onnx_models
