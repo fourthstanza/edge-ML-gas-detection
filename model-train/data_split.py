@@ -364,7 +364,7 @@ class DataIterable:
             X_list.append(X_i)
             y_list.append(y_i)
 
-        X_array = np.array(X_list)
-        y_array = np.array(y_list)
+        X_array = np.array(X_list, dtype=np.float32)
+        y_array = np.array(y_list, dtype=np.float32)
 
         return X_array, y_array
