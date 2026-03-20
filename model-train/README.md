@@ -4,6 +4,8 @@
 
 I've put these together to simplify my workflow training models and processing them through Edge Impulse for deployment on microcontrollers.
 
+When cloning this repo, be sure to create the onnx_models and data folders in the root folder before running any code. Populate the data folder with any data you wish to injest into the pipeline.
+
 ### Before running, you'll need
 
 * **Python version 3.11** (tested, will likely work fine with other releases which tflite supports. check tflite docs!)
