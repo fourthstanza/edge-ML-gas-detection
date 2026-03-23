@@ -364,7 +364,7 @@ class DataIterable:
             X_list.append(X_i)
             y_list.append(y_i)
 
-        X_array = np.array(X_list, dtype=np.float32)
-        y_array = np.array(y_list, dtype=np.float32)
+        X_array = np.array(X_list, dtype=np.float32).squeeze() # conversion to ndarry and squeezing to remove extra dims, of which sklearn does not like
+        y_array = np.array(y_list, dtype=np.float32).squeeze()
 
         return X_array, y_array
