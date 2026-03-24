@@ -1,0 +1,43 @@
+# ------------- SET DATASET FEATURES HERE -------------- #
+
+FILE_NAME: str = 'ethylene_methane_ds_10hz.parquet'    # Set name of dataset. Ensure it is placed in generated-data (shape of the ethylene-methane dataset is [time_s, methane_ppm, ethylene_ppm, feature1, ..., feature16])
+PARQUET: bool = True                                   # Set only the filetype which corresponds to the dataset you are using as true.
+CSV: bool = False
+
+INPUTS: int = 16                                       # Number of features to be used for training the model
+X_COLUMNS: list = list(range(3, 3+INPUTS))             # Column(s) to be used as features 
+Y_COLUMNS: list | int = 1                              # Column(s) to be used as the target variable. Only use a list if there are multiple target variables.
+T_COLUMN:  int = 0                                     # Column representing time (in seconds)
+FREQUENCY: int = 10                                    # Sampling frequency of the dataset (in Hz)
+# -------- SET DATASET HANDLING OPTIONS HERE ----------- #
+
+WINDOW_SIZE: float = 1                                 # Size of the sliding window for creating sequences of data for training the model (in seconds)
+SEED: int = 42                                         # Random seed for reproducibility of the train-test-validation split
+
+from pathlib import Path
+
+ROOT_DIR = Path.cwd().parent
+DATA_DIR = ROOT_DIR.joinpath('data')
+
+from parquet_to_pd import parquetToDf
+from csv_to_pd import csvToDf
+from data_split import DataSplit
+
+
+def setup_split():
+    if PARQUET:
+        df = parquetToDf(FILE_NAME)
+    elif CSV:
+        df = csvToDf(FILE_NAME)
+    else:
+        raise ValueError("No filetype set to true. Set the filetype corresponding to the dataset being used to true.")
+
+    data = df.to_numpy()
+
+    winlength:int = int(WINDOW_SIZE * FREQUENCY)
+
+    X = data[:, X_COLUMNS]
+    y = data[:, Y_COLUMNS]
+    t = data[:, T_COLUMN]
+
+    return DataSplit(X, y, winlength, split=[0.7,0.15,0.15], time = t, seed = SEED, scaling=True)
