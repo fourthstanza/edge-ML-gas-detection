@@ -4,3 +4,4 @@ generated-data/
 model-train/__pycache__/
 .onnx
 onnx_models
+saved_indices
