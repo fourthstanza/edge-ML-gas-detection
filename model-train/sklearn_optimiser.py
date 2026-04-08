@@ -20,9 +20,6 @@ class SklearnOptimiser():
     y_full: np.ndarray
 
     parameterGrid: list[dict[str, object]]
-
-
-
     scores: list[tuple]
 
     def __init__(self, data: DataSplit, classifier: sklearn.base.BaseEstimator, parameterGrid: list[dict[str, object]]):
