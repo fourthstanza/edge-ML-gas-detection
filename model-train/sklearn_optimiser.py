@@ -38,9 +38,14 @@ class SklearnOptimiser():
     def optimize(self, optimizer: str, n_jobs = 1):
 
         if optimizer == "grid search" or optimizer == "grid_search" or optimizer == "gridsearch":
-            self.grid = sklearn.model_selection.GridSearchCV(self.classifier, self.parameterGrid, n_jobs=n_jobs)
+            self.grid = sklearn.model_selection.GridSearchCV(self.classifier, self.parameterGrid, n_jobs = n_jobs)
             self.grid.fit(self.X_full, self.y_full)
             self.optimalClassifier = self.grid.best_estimator_
+        
+        if optimizer == "random":
+            self.rand = sklearn.model_selection.RandomizedSearchCV(self.classifier, self.parameterGrid, n_jobs = n_jobs)
+            self.rand.fit(self.X_full, self.y_full)
+            self.optimalClassifier = self.rand.best_estimator_
 
         else:
             raise ValueError("Unsupported optimizer type: " + optimizer)
