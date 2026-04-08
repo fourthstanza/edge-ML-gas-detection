@@ -1,6 +1,12 @@
 import random
 import numpy as np
 import sklearn.preprocessing
+from pathlib import Path
+import pandas as pd
+from pd_to_csv import dfToCsv
+
+ROOT_DIR = Path.cwd().parent
+INDICES_DIR = ROOT_DIR.joinpath("saved_indices")
 
 class DataSplit:
 
@@ -53,7 +59,7 @@ class DataSplit:
 
     winlen: int
 
-    def __init__(self, X: np.ndarray, y:np.ndarray, win_length: int, split: tuple[float, float, float] | list[float] | None, time: np.ndarray | None = None, seed: int | None = None, scaling: bool = False):
+    def __init__(self, X: np.ndarray, y:np.ndarray, win_length: int, split: tuple[float, float, float] | list[float] | None, time: np.ndarray | None = None, seed: int | None = None, scaling: bool = False, splitIndices = None):
         """
         Initialize the dataset split.
 
@@ -98,20 +104,27 @@ class DataSplit:
             scaler.fit_transform(self.features, self.target)
 
         self.time = time
-
         self.data_length = self.features.shape[0]
 
-        if split is not None:
-            if abs(sum(split) - 1.0) > 1e-6:
-                raise ValueError("Split proportions must sum to 1")
-            if split[0] <= 0 or split[1] <= 0 or split[2] <= 0:
-                raise ValueError("Split proportions must be positive")
-            if split[1] * (self.data_length - win_length) < 1 or split[2] * (self.data_length - win_length) < 1:
-                raise ValueError("Split proportions too small, no data allocated to test or validation set")
+        if splitIndices is not None:
+            self.tr_ind = splitIndices[0]
+            self.tst_ind = splitIndices[1]
+            self.val_ind = splitIndices[2]
+            self.train = DataIterable(self, self.tr_ind)
+            self.test = DataIterable(self, self.tst_ind)
+            self.val = DataIterable(self, self.val_ind)
         else:
-            split  = (0.6, 0.2, 0.2)
+            if split is not None:
+                if abs(sum(split) - 1.0) > 1e-6:
+                    raise ValueError("Split proportions must sum to 1")
+                if split[0] <= 0 or split[1] <= 0 or split[2] <= 0:
+                    raise ValueError("Split proportions must be positive")
+                if split[1] * (self.data_length - win_length) < 1 or split[2] * (self.data_length - win_length) < 1:
+                    raise ValueError("Split proportions too small, no data allocated to test or validation set")
+            else:
+                split  = (0.6, 0.2, 0.2)
 
-        self.split(split, seed)
+            self.split(split, seed)
 
     def split(self, split: tuple[float, float, float] | list[float], seed: int | None = None):
         """
@@ -179,6 +192,14 @@ class DataSplit:
 
         self.train = DataIterable(self, self.tr_ind)
         self.test = DataIterable(self, self.tst_ind)
+
+    def export_indices(self):
+        """
+        Export the indices of the three datasplit DataIterables as a CSV for import into another session.
+        """
+        indices = [self.tr_ind, self.tst_ind, self.val_ind]
+        df = pd.DataFrame(indices)
+        dfToCsv(df, "indices_save", INDICES_DIR)
 
 class DataIterable:
     """
