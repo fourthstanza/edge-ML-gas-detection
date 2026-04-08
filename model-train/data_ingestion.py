@@ -14,6 +14,7 @@ FREQUENCY: int = 10                                    # Sampling frequency of t
 WINDOW_SIZE: float = 1                                 # Size of the sliding window for creating sequences of data for training the model (in seconds)
 SEED: int = 42                                         # Random seed for reproducibility of the train-test-validation split
 
+import pandas as pd
 from pathlib import Path
 
 ROOT_DIR = Path.cwd().parent
@@ -24,7 +25,7 @@ from csv_to_pd import csvToDf
 from data_split import DataSplit
 
 
-def setup_split():
+def setup_split(splitIndices: pd.DataFrame | None = None):
     if PARQUET:
         df = parquetToDf(FILE_NAME)
     elif CSV:
@@ -40,4 +41,8 @@ def setup_split():
     y = data[:, Y_COLUMNS]
     t = data[:, T_COLUMN]
 
-    return DataSplit(X, y, winlength, split=[0.7,0.15,0.15], time = t, seed = SEED, scaling=True)
+    indices = None
+    if splitIndices is not None:
+        indices = splitIndices.to_numpy()
+    
+    return DataSplit(X, y, winlength, split=[0.7,0.15,0.15], time = t, seed = SEED, scaling=True, splitIndices=indices)
